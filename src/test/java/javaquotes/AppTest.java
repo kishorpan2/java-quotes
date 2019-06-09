@@ -4,11 +4,35 @@
 package javaquotes;
 
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    @Test
+    public void testMain() {
+        String[] empty = new String[1];
+        empty[0] ="test";
+        App.main(empty);
+        assertTrue("Must not equal null",outContent.toString() != null);
     }
+    @Test
+    public void testGetRandom() {
+        int num = App.getRandom(10000);
+        assertTrue("Must be in the range 800", 0 <= num && num >= 800);
+
+        num = App.getRandom(2000000);
+        assertTrue("Must be in the range 200", 0 <= num && num >= 190);
+    }
+    @Test
+     public void testToString()  {
+        String[] tags ={"Hi"};
+        Quote quote = new Quote(tags, "Author","4","it was awesome");
+        assertEquals("it was awesome--Author",quote.toString());
+    }
+
 }
+
+
