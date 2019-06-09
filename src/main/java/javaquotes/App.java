@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App {
     public static void main (String[] args) {
         readFile();
+
     }
 
 
@@ -34,6 +35,7 @@ public class App {
         }
 
     }
+
     public static int getRandom(int num){
         return (int)Math.floor(Math.random()*(num));
     }
